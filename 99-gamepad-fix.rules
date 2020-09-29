@@ -1,1 +1,7 @@
-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0x045e", ATTRS{idProduct}=="0x028e", ACTION=="add", RUN+="/usr/local/bin/fix-gamepad"
+SUBSYSTEM=="usb",
+  ATTRS{idVendor}=="045e",
+  ATTRS{idProduct}=="028e",
+  ATTR{manufacturer}=="SHANWAN",
+  ATTR{product}=="Controller",
+  ACTION=="add",
+  RUN{program}+="/usr/local/bin/fix-gamepad"

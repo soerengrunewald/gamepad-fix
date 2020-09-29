@@ -12,7 +12,6 @@
 int main(int argc, char *argv[])
 {
 	unsigned char cmd[1] = { 0x14 };
-	struct libusb_device_descriptor d;
 	libusb_device_handle *h;
 	libusb_context *c = NULL;
 	int r;
@@ -35,17 +34,6 @@ int main(int argc, char *argv[])
 	h = libusb_open_device_with_vid_pid(c, 0x045e, 0x028e);
 	if (h == NULL) {
 		fprintf(stderr, "Unable to open usb device\n");
-		goto cleanup;
-	}
-
-	r = libusb_get_device_descriptor(libusb_get_device(h), &d);
-	if (r != 0) {
-		fprintf(stderr, "Unable to query device descriptor: %s\n", libusb_strerror(r));
-		goto cleanup;
-	}
-
-	if (d.iManufacturer != 1 && d.iProduct != 2) {
-		fprintf(stderr, "Not a Shanwan controller\n");
 		goto cleanup;
 	}
 
