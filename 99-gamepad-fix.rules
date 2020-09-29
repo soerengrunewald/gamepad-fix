@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0x045e", ATTRS{idProduct}=="0x028e", ACTION=="add", RUN+="/usr/local/bin/fix-gamepad"
